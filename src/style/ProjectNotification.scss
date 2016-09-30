@@ -1,0 +1,70 @@
+.ProjectNotification {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 200px;
+  position: relative;
+  cursor: pointer;
+
+  &__icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    background: #4f5f67;
+    margin: auto;
+  }
+
+  &__divider {
+    display: inline-block;
+    width: 2px;
+    height: 35px;
+    background: #4f5f67;
+    margin: 0px 10px;
+  }
+
+  &__count {
+    display: inline-block;
+    width: 25px;
+
+    p {
+      margin: 0px;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+  }
+
+  &__overlay {
+    top: 30px;
+    right: -15px;
+    position: absolute;
+    z-index: 7;
+    max-width: 350px;
+    white-space: nowrap;
+    overflow-x: scroll;
+    margin-top: 10px;
+    padding: 8px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .2), 0px 3px 5px rgba(0, 0, 0, .5);
+    transition: all .2s ease-in-out;
+    opacity: 0;
+    max-height: 0px;
+  }
+
+  &:hover {
+    .ProjectNotification__overlay {
+      opacity: 1;
+      max-height: 100px;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+
+  .project:nth-child(2n + 1) .projectNotification__overlay {
+    left: -15px;
+    right: auto;
+  }
+
+}

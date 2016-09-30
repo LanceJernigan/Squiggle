@@ -1,0 +1,36 @@
+.discussion {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__header {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  &__content {
+    display: flex;
+
+    .discussion__author {
+      width: 22%;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .discussion__update {
+      margin-top: 15px;
+      width: 78%;
+      padding-right: 20px;
+      height: 150px;
+      overflow: hidden;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1 1 auto;
+    margin: 35px 0px 10px 0px;
+  }
+}
