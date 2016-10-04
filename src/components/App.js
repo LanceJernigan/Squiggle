@@ -1,31 +1,21 @@
 import React from 'react'
-import {render} from 'react-dom'
-
-import Projects from '../containers/Projects'
-
 require('../style/App.scss')
 
-const {Component} = React
+const App = (props) => {
 
-class App extends Component {
+    return (
 
-    render() {
+        <div className="app">
 
+            <div className="content">
 
-        return (
-
-            <div className="app">
-
-                <div className="content">
-
-                    {this.props.children}
-
-                </div>
+                {props.children}
 
             </div>
 
-        )
-    }
+        </div>
+
+    )
 
 }
 

@@ -6,7 +6,7 @@ import List from '../components/List'
 
 import {toggleProject} from '../actions'
 
-require('../style/Projects.scss')
+//require('../style/Projects.scss')
 
 const mapDispatchToProps = (dispatch, props) => ({
     toggleActive: (id) => dispatch(toggleProject(id))

@@ -23,7 +23,7 @@ const Discussion = (props) => {
 
                 <div className="discussion__author">
 
-                    <MemberLinks data={[props.messages[0].author]} />
+                    {/*<MemberLinks data={[props.messages[0].author]} />*/}
 
                 </div>
 
@@ -33,7 +33,7 @@ const Discussion = (props) => {
 
             <div className="discussion__footer">
 
-                <ProjectNotification count={props.members.length} component={MemberLinks} data={props.members || []} />
+                {/*<ProjectNotification count={props.members.length} component={MemberLinks} data={props.members || []} />*/}
 
             </div>
 

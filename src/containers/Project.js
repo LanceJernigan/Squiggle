@@ -10,7 +10,7 @@ const filterProjects = (projects, id) => projects.filter( project => project.id 
 const mapStateToProps = (state, props) => {
 
     return ({
-        project: filterProjects(state.projects, props.params.projectID),
+        project: state.particles.items.filter(particle => particle.id === parseInt(props.params.projectID)).shift(),
     })
 
 }

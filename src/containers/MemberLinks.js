@@ -11,8 +11,6 @@ const filterMembers = (members, projectMembers) => members.filter( member => pro
 
 const mapStateToProps = (state, props) => {
 
-    console.log(state, props)
-
     return ({
         data: filterMembers(state.members, props.data),
         component: MemberLink,

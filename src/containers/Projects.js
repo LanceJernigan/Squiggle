@@ -7,7 +7,7 @@ import List from '../components/List'
 
 import {toggleProject} from '../actions'
 
-require('../style/Projects.scss')
+//require('../style/Projects.scss')
 
 const filterProjects = (state, action = {type: 'default'}) => {
 
@@ -38,7 +38,7 @@ const mapDispatchToProps = (dispatch, props) => ({
 const mapStateToProps = (state, props) => {
 
     return ({
-        data: filterProjects(state.projects).sort((a, b) => a.title === b.title ? 0 : a.title < b.title ? -1 : 1),
+        data: state.particles.items.filter(particle => particle.type === 'project'),
         component: ProjectPreview,
         className: 'projects'
     })

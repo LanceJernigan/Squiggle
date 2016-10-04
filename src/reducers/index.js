@@ -1,13 +1,11 @@
 import { combineReducers } from 'redux'
 
-import projects from './projects'
-import members from './members'
+import particles from './particles'
 import search from './search'
 
-const PM = combineReducers({
-    projects,
-    members,
+const squiggle = combineReducers({
+    particles,
     search
 })
 
-export default PM
+export default squiggle

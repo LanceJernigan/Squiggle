@@ -6,6 +6,7 @@ var APP_DIR = path.resolve(__dirname, 'src');
 
 var config = {
   entry: [
+      'babel-polyfill',
       'webpack-dev-server/client?http://localhost:8080',
       APP_DIR + '/index.js'
   ],
