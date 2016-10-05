@@ -1,6 +1,6 @@
 import React from 'react'
-
 import Project from './Project'
+import Discussion from './Discussion'
 
 const atoms = {
     project: () => {
@@ -10,6 +10,13 @@ const atoms = {
         return Project
 
     },
+    discussion: () => {
+
+        require('../style/Discussion.scss')
+
+        return Discussion
+
+    }
 }
 
 const Director = ({particles, navigate}) => {
@@ -20,7 +27,7 @@ const Director = ({particles, navigate}) => {
 
             {
 
-                particles.map( particle => React.createElement(atoms[particle.type](), {particle: particle, single: (particles.length === 1), navigate: navigate, key: particle.type + '_' + particle.id}) )
+                particles.map( particle => React.createElement(atoms[particle.classification](), {particle: particle, single: (particles.length === 1), navigate: navigate, key: particle.classification + '_' + particle.id}) )
 
             }
 

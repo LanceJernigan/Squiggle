@@ -3,19 +3,17 @@ import React from 'react'
 import MemberLinks from '../containers/MemberLinks'
 import ProjectNotification from './ProjectNotification'
 
-require('../style/Discussion.scss')
-
-const Discussion = (props) => {
+const Discussion = ({particle, single, navigate}) => {
 
     return (
 
-        <div className="discussion">
+        <div className="discussion" onClick={() => navigate(particle.classification, particle.id)}>
 
             <div className="discussion__header">
 
-                <h3 className="discussion__title">{props.messages[0].title}</h3>
+                <h3 className="discussion__title">{particle.title}</h3>
 
-                <h4 className="discussion__posted">{props.messages[0].posted}</h4>
+                <h4 className="discussion__posted">{particle.subject}</h4>
 
             </div>
 
@@ -27,7 +25,7 @@ const Discussion = (props) => {
 
                 </div>
 
-                <p className="discussion__update">{props.messages[0].content}</p>
+                <p className="discussion__update">{particle.description}</p>
 
             </div>
 

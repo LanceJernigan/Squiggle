@@ -49,10 +49,8 @@
 //
 //}
 
-export const requestParticles = (particleType, args) => ({
-    type: 'REQUEST_PARTICLES',
-    particleType: particleType,
-    args: args
+export const requestParticles = () => ({
+    type: 'REQUEST_PARTICLES'
 })
 
 export const receiveParticles = (particles) => ({
@@ -61,19 +59,24 @@ export const receiveParticles = (particles) => ({
     timestamp: Date.now()
 })
 
-export const fetchParticles = (particleType = 'project', {offset = 0, limit = 5}) => {
+export const fetchParticles = ({classification = 'project', id = 0, offset = 0, limit = 5}) => {
 
     return (dispatch) => {
 
-        dispatch(requestParticles(particleType, {offset, limit}))
+        const url = classification === 'ALL' ?
+            'http://localhost:3000/particles?parent=' + id + '&_start=' + offset + '&_end=' + (offset + limit) :
+            'http://localhost:3000/particles?classification=' + classification + '&_start=' + offset + '&_end=' + (offset + limit)
 
-        return fetch('http://localhost:3000/particles?type=' + particleType + '&_start=' + offset + '&_end=' + (offset + limit))
+        dispatch(requestParticles())
+
+        return fetch(url)
             .then(response => response.json())
             .then(json => {
 
                 dispatch(receiveParticles(json))
 
             })
+            .catch(err => console.log(err))
 
     }
 

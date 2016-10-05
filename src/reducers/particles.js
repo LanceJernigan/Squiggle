@@ -37,9 +37,16 @@ const particles = (state = initialState, action) => {
 
             return Object.assign({}, state, {
                 isFetching: false,
-                table: action.particles,
+                table: [
+                    ...state.table,
+                    ...action.particles.filter(particle => state.table.reduce((pre, curr) => {
+                        pre[pre.length] = curr.id
+                        return pre
+                    }, []).indexOf(particle.id) == -1)
+                ],
                 timestamp: action.timestamp
             })
+
         //
         //case 'TOGGLE_ACTIVE':
         //

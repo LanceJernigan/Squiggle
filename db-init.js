@@ -4,11 +4,11 @@ module.exports = function () {
 
     var particles = []
 
-    var quantize = function(parent, author, type, title, subject, content, state) {
+    var quantize = function(parent, author, classification, title, subject, content, state) {
 
         parent = parent || 0
         author = author || 1
-        type = type || 'project'
+        classification = classification || 'project'
         title = title || ''
         subject = subject || ''
         content = content || ''
@@ -18,7 +18,7 @@ module.exports = function () {
             id: particles.length + 1,
             parent: parent,
             author: author,
-            type: type,
+            classification: classification,
             title: title,
             subject: subject,
             content: content,
@@ -27,16 +27,16 @@ module.exports = function () {
 
     }
 
-    var energize = function(type, count) {
+    var energize = function(classification, count) {
 
-        type = type || 'project'
+        classification = classification || 'project'
         count = count || 5
 
         for (var i = 0; i < count; i ++) {
 
-            var particle = particalLookup[type]()
+            var particle = particalLookup[classification]()
 
-            quantize(particle.parent, particle.author, particle.type, particle.title, particle.subject, particle.content, particle.state)
+            quantize(particle.parent, particle.author, particle.classification, particle.title, particle.subject, particle.content, particle.state)
 
         }
 
@@ -49,9 +49,9 @@ module.exports = function () {
             return (
 
                 {
-                    type: 'project',
+                    classification: 'project',
                     parent: 0,
-                    author: particles.filter( particle => particle.type === 'member' )[0].id,
+                    author: particles.filter( particle => particle.classification === 'member' )[0].id,
                     title: faker.commerce.productName(),
                     subject: faker.lorem.sentence(Math.floor(Math.random() * 6) + 3, 7),
                     content: faker.lorem.paragraph(Math.floor(Math.random() * 3) + 1),
@@ -70,9 +70,9 @@ module.exports = function () {
             return (
 
                 {
-                    type: 'discussion',
-                    parent: particles.filter( particle => particle.type === 'project' )[faker.random.number(particles.filter( particle => particle.type === 'project').length)],
-                    author: particles.filter( particle => particle.type === 'member' )[0].id,
+                    classification: 'discussion',
+                    parent: particles.filter( particle => particle.classification === 'project' )[0].id,
+                    author: particles.filter( particle => particle.classification === 'member' )[0].id,
                     title: faker.lorem.words(Math.floor(Math.random() * 6) + 3),
                     subject: faker.lorem.sentence(Math.floor(Math.random() * 6), 7),
                     content: faker.lorem.paragraph(Math.floor(Math.random() * 3) + 1),
@@ -88,9 +88,9 @@ module.exports = function () {
             return (
 
                 {
-                    type: 'message',
-                    parent: particles.filter( particle => particle.type === 'discussion' )[faker.random.number(particles.filter( particle => particle.type === 'discussion').length)],
-                    author: particles.filter( particle => particle.type === 'member' )[0].id,
+                    classification: 'message',
+                    parent: particles.filter( particle => particle.classification === 'discussion' )[0].id,
+                    author: particles.filter( particle => particle.classification === 'member' )[0].id,
                     title: '',
                     subject: '',
                     content: faker.lorem.paragraph(Math.floor(Math.random() * 3) + 1),
@@ -106,7 +106,7 @@ module.exports = function () {
             return (
 
                 {
-                    type: 'member',
+                    classification: 'member',
                     parent: 0,
                     author: 0,
                     title: '',
