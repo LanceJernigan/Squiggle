@@ -1,4 +1,7 @@
 import React from 'react'
+
+import Particles from '../containers/Particles'
+
 require('../style/App.scss')
 
 const App = (props) => {

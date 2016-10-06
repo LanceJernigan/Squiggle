@@ -1,59 +1,8 @@
-//
-//constructor(props) {
-//
-//    super(props)
-//
-//    this.state = {
-//        projects: _database.get('projects', {}),
-//        totalProjects: _database.projects.length
-//    }
-//
-//    this.loadProjects = this.loadProjects.bind(this)
-//    this.loadDiscussions = this.loadDiscussions.bind(this)
-//
-//}
-//
-//loadProjects() {
-//
-//    this.setState({
-//        projects: [
-//            ...this.state.projects,
-//            ..._database.get('projects', {offset: this.state.projects.length})
-//        ]
-//    })
-//
-//}
-//
-//loadDiscussions(id) {
-//
-//    this.setState({
-//
-//        projects: this.state.projects.map( (project) => {
-//
-//            if (project.id === id) {
-//
-//                project.discussions = _database.get('discussions', {
-//                    where: [{
-//                        key: 'parent',
-//                        value: id
-//                    }]
-//                })
-//
-//            }
-//
-//            return project
-//
-//        })
-//
-//    })
-//
-//}
-
-export const requestParticles = () => ({
+const requestParticles = () => ({
     type: 'REQUEST_PARTICLES'
 })
 
-export const receiveParticles = (particles) => ({
+const receiveParticles = (particles) => ({
     type: 'RECEIVE_PARTICLES',
     particles: particles,
     timestamp: Date.now()

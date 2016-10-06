@@ -4,8 +4,8 @@ import {browserHistory} from 'react-router'
 
 import {fetchParticles} from '../actions'
 
-import Discussion from '../components/Discussion'
-import Director from '../components/Director'
+import Accelerator from '../components/Accelerator'
+import Pattern from '../components/Pattern'
 
 const mapDispatchToProps = (dispatch, props) => ({
 
@@ -19,19 +19,17 @@ const mapDispatchToProps = (dispatch, props) => ({
 
 })
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state, {id = 0, classification = 'ALL', children}) => {
 
-    const id = parseInt(props.params.id) || 0
-    const classification = props.params.classification || 'project'
     const particles = state.particles.table.filter( particle => {
 
         return (
 
             classification !== 'ALL' ?
                 particle.classification === classification ?
-                    particle.parent === id || particle.id === id :
+                    particle.parent === parseInt(id) || particle.id === parseInt(id) :
                     false
-                : particle.parent === id
+                : particle.parent === parseInt(id)
 
         )
 
@@ -39,10 +37,12 @@ const mapStateToProps = (state, props) => {
 
     return {
         particles: particles,
+        patterns: Array.isArray(children) ? children : [children],
+        single: particles.length == 1
     }
 
 }
 
-const Particles = connect(mapStateToProps, mapDispatchToProps)(Director)
+const Particles = connect(mapStateToProps, mapDispatchToProps)(Accelerator)
 
 export default Particles

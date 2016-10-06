@@ -6,7 +6,7 @@ import thunkMiddleware from 'redux-thunk'
 import {Router, Route, IndexRoute, browserHistory} from 'react-router'
 
 import App from './components/App'
-import Particles from './containers/Particles'
+import Content from './components/Content'
 import reducer from './reducers'
 
 import {fetchParticles} from './actions'
@@ -22,8 +22,8 @@ render(
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={App}>
-                <IndexRoute component={Particles} />
-                <Route path="/:classification/:id" component={Particles} />
+                <IndexRoute component={Content} />
+                <Route path="/:classification/:id" component={Content} />
             </Route>
         </Router>
     </Provider>,
